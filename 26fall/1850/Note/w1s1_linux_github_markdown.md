@@ -2,7 +2,7 @@
 ## 1. Linux Shell(command line) ##
 ## 1.1 Directory Command（目录命令) ##
 |  command |Action  | desc  |
-|  ----  | --  |----  |
+|  ------  | ---  | ---- |
 | mkdir [dir_name]  |增| makes a new (empty) named directory, (eg. mkdir myCode) |
 | rmdir [dir_name]  |删|  remove an empty named directory, (eg. rmdir myCode),只有空目录才可以删除，目录中有文件和子目录则失败|
 | pwd               |查|tells you your current directory (folder) |
@@ -12,7 +12,7 @@
 
 ## 1.2 File Command（文件命令) ##
 |  command   | Action  |desc  |
-|  ----  |--  | ----  |
+|  ------  | ---  | ---- |
 | touch [file_name]         |增| makes a new (empty) file (eg. touch myFile.txt) |
 | cp [src_file] [dest_file] |增| copy src_file to dest_file|
 | rm [file_name]            |删| remove a file (eg. rm myFile.txt) |
@@ -69,7 +69,7 @@
 ### 4.1 Why do we need a version control tool？
 **In industry**
 + You are always working in a team
-+ You work on the same codebas（代码库）e as other people
++ You work on the same codebase（代码库） as other people
 + The codebase may be live(already deployed and running)  
     
 
@@ -94,7 +94,7 @@
     • 仓库只用clone一次，后续用pull同步  
 
 |  步骤 | 说明  |
-|  ----  |----  |
+|  ----  | ----  |
 | cd /src  |进入根目录下的src目录 |
 | git clone https://github.com/vcboy1/Leeds.git | 将仓库clone到本地的/src目录下，代表仓库的.git路径获取方式见下图|
 |cd Leeds|clone成功后，进入本地底仓目录Leeds|
@@ -121,7 +121,7 @@
 工作原理  
 ![工作原理](images/w1s1_git_push_pull.jpg)
 |  步骤 | 说明  |
-|  ----  |----  |
+|  ----  | ---- |
 | git pull origin |从远程origin仓库拉取最新代码到本地工作空间 |
 |  |做正常的开发工作 |
 | git add .  |stages(暂存) your changes – it tells Git that you have done some work you would like to save|
@@ -198,3 +198,5 @@
     ---
 
 ---
+本文件的Markdown版本在:  
+https://github.com/vcboy1/Leeds/blob/main/26fall/1850/Note/w1s1_linux_github_markdown.md
