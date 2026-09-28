@@ -194,9 +194,22 @@
 | 单元格  | 单元格 |
 | 单元格  | 单元格 |
 
+### 5.6 Python代码块 ###
+    ```python
+    def print_hello_world()
+        print("hello  world")
+    ``` 
+
+```python
+def print_hello_world()
+    print("hello  world")
+``` 
+
 ### 5.7 分割线 ###
     ---
 
 ---
+
+
 本文件的Markdown版本在:  
 https://github.com/vcboy1/Leeds/blob/main/26fall/1850/Note/w1s1_linux_github_markdown.md
