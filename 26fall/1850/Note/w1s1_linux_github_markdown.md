@@ -9,6 +9,7 @@
 | ls                |查|  list everything in the current directory (files or directories) |
 | cd [dir_name]     |改|  move into a named directory (eg. cd myCode) |
 | cd ..             |改|  move up one directory level |  
+| cd ~              |改|  move into home directory |  
 
 ## 1.2 File Command（文件命令) ##
 |  command   | Action  |desc  |
