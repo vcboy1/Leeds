@@ -1,5 +1,17 @@
-# 初次clone仓库
+## 从github仓库拉取代码到 本地
+```
+git stash push
+git pull
+git stash pop
+```
 
-![](https://www.runoob.com/wp-content/uploads/2019/03/A042DF30-C232-46F3-8436-7D6C35351BBD.jpg) 
-# 后续同步仓库
+## 本地代码推送到github仓库
+```
+git stash push
+git pull
+git stash pop
 
+git add .
+git commit  -m ""
+git push
+```
