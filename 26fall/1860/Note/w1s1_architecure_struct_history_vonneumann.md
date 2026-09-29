@@ -52,7 +52,42 @@
     • Architecture就像房屋的设计图纸，而Organisation就像根据蓝图搭建的房屋。一份Architecture可以对应不同的Organisation实现。比如ARM CPU Architecture，就被数以百计的芯片公司（华为、中兴、Google)Organisation。
       
 ###  5. 扩展阅读
-[X86 CPU 架构发展历史](https://blog.csdn.net/Hide_in_Code/article/details/113799454)
+[X86 CPU 架构发展历史](https://blog.csdn.net/Hide_in_Code/article/details/113799454)  
 
 
-   
+## Computer Structure(计算机结构)
+### Structure and Function(结构和功能)
+|术语|说明|
+| --- | --- |
+|Structure|This is the way in which components relate to each other.<br>组件相互关联的方式|
+|Function|The operation of each individual component as part of the structure.<br>作为Structure一部分的单个组件的操作|
+
+    计算机系统非常复杂，自上而下分析的方法是最清晰、最有效的。我们从计算机的主要组件开始，描述它们的Structure和Function，然后依次进入层次结构的较低层。
+
+### Function
+There are four basic functions that a computer can perform:  
+
+    • Data processing
+        Data may take a wide variety of forms, and the range of processing requirements is broad 
+
+    • Data storage
+        Short-term
+        Long-term   
+
+    • Data movement
+        Input-output (I/O) - when data are received from or delivered to a device (peripheral) that is directly connected to the computer  
+
+        Data communications – when data are moved over longer distances, to or from a remote device  
+
+    • Control
+        A control unit manages the computer’s resources and orchestrates the performance of its functional parts in response to instructions
+    
+### Hierarchical Structure（分级结构）
+    • A computer is a very complex system which is difficult to describe (e.g. x86 manual ∼ 5000 pages).  
+
+    • This is simplified by considering a hierarchical structure.（通过考虑分解结构简化了这一点）  
+
+    • At each level, the system consists of a set of components and their interrelationships（相互关系）.  
+
+    • The behaviour at each level depends on a simplified, abstracted characterisation of the system at the next level down.（每一级的行为取决于下一级系统的简化、抽象特征。）  
+    

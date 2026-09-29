@@ -176,6 +176,9 @@ x = 1
 print(f'{x+1}')   # '2'
 
 ```   
+---
+[*** fstring教程(必看) ***](https://fstring.help/)  
+
 #### function
 | 序号 | 方法 | 描述 |
 |---|---|---|
