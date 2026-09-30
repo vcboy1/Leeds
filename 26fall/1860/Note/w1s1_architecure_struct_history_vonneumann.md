@@ -320,13 +320,72 @@ in 1970-
 ### 4.2 classifications（类别)
     CISC – Complex Instruction Set Computer (复杂指令集)
     RISC – Reduced Instruction Set Computer (精简指令集)
+            ⬥Small number of basic instructions, e.g. load, add, multiply
+            ⬥All features implemented using these basic instructions
+        
 
 |ISA|||
 | --- | --- | --- |
-|CISC|x86||
-|CISC|x64||
-|RISC|RISC V||
-||ARM||
-||OpenRISC||
+|CISC|x86|• ISA called x86 after Intel 8086 processor (first in family)<br>• AMD processors compatible(兼容) with x86 instruction set<br>• Number of instructions increased as processors in family added more features<br>• Lots of instruction set extensions to handle special features（Virtualization、Cryptography, etc）.|
+||x64|x86的64位版本|
+|RISC|RISC V|Open standard|
+||ARM|Amber (ARM v2) is open source|
+||OpenRISC|Another open standard|
     
+## 5. Embedded Systems
+### 5.1 Embedded Systems
+
+    •  The use of electronics and software within a product（在产品中使用电子和软件）  
+
+    •  Today many devices that use electric power have an embedded computing system  (calculators, microwave ovens,  washing machines, tv)   
     
+    •  Tightly coupled to environment(与环境紧密耦合)    
+        ⬥ Real-time constraints(实时约束) such as required speeds of motion, required precision of measurement, and required time durations
+    
+### 5.2 Embedded Systems: Organisation(组成)
+![](images/w1s2_es_differ.jpg)
+|Component||
+| --- | --- |
+|A/D|模拟/数字转换器，Sensor从环境中获取模拟信号，并转换为Processor能处理的数字信号|
+|D/A|数字/模拟转换器，Processor用数字信号控制Actuators来影响环境|
+|Diagnostic Port|used for diagnosing the system that is being controlled|
+|Human interface|flashing light，alert|
+
+
+
+### 5.3 Internet of Things（物联网IoT）
+    •  IoT:   expanding interconnection(互联) of smart devices, ranging from appliances to tiny sensors（从电器到微型传感器）  
+    •  Is primarily driven by embedded devices（主要由嵌入式设备驱动）
+![](images/w1s2_IoT.jpg) 
+Generations of deployment culminating in the IoT(几代技术的发展最终形成了物联网)
+|技术|设备|谁买 |连接方式 |
+| --- | --- | --- | --- |
+|Information technology (IT)|PCs, servers, routers, firewalls, and so on| enterprise IT people |  wired connectivity|
+|Operational technology (OT)| Machines with embedded IT built by non-IT companies, such as medical machinery, process control, and kiosks| enterprise OT people |wired connectivity 
+|Personal technology| Smartphones, tablets, and eBook readers | consumers |wireless connectivity|  
+|Sensor/actuator technology| Single-purpose devices|consumers, IT, and OT people|wireless connectivity|
+
+### 5.4 Microcontrollers（微控制器，又叫单片机）
+![](images/w1s2_mcontroler.jpg)  
+
+    每年有数十亿个Microcontrollers嵌入到从玩具到电器再到汽车的无数产品中。例如，一辆车可以使用70个或更多的Microcontrollers。通常，特别是对于较小、较便宜的微控制器，它们被用作特定任务的专用处理器。例如，微控制器在自动化过程中被大量使用。通过提供对输入的简单反应，他们可以控制机器、打开和关闭风扇、打开和闭合阀门等等。它们是现代工业技术的组成部分，是生产能够处理极其复杂功能的机械的最便宜的方法之一。
+
+    微控制器有各种物理尺寸和处理能力。处理器的范围从4位到32位架构。微控制器往往比微处理器慢得多，通常在MHz范围内运行，而不是微处理器的GHz速度。微控制器的另一个典型特征是它不提供人机交互。微控制器针对特定任务进行编程，嵌入其设备中，并在需要时执行。
+
+
+### 5.5 Embedded Systems: Concept
+|用途|缩写|解释|
+| --- | --- | --- |   
+|封装方式| Soc（片上系统）|一种集成思想：把 CPU、存储、外设甚至 GPU/DSP 都集成到一颗芯片|
+|芯片设计方式|ASIC（专用集成电路）|把设计"烧死"在硅片上,量产时单颗成本极低、性能功耗更好，适合量大，硬件固定不可改，不可编程|
+||FPGA（现场可编程门阵列）|出厂是空白逻辑，用户随时改设计 → 灵活，适合原型、小批量,可编程硬件：芯片里是大量逻辑单元，连线由你定义|
+|处理器用途|Microcontrollers（微控制器）|一颗芯片 = CPU + 存储 + 外设（定时器、GPIO、ADC…）|
+||DSP (数字信号处理器)|专为数字信号处理优化的处理器|
+
+![](images/w1s2_soc.jpg)  
+
+|||
+| --- | --- |
+|![](images/w1s2_soc2.jpg)  ||
+|![](images/w1s2_fpga.jpg)  |![](images/w1s2_asic.jpg)  |
+![](images/w1s2_dsp2.jpg)  | |
