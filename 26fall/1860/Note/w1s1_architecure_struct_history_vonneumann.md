@@ -3,8 +3,12 @@
    •  Architecture & Organisation(架构与组织)  
    •  Computer Structure  
    •  History of Computer Hardware  
-   •  Von Neumann Architecture（冯诺依曼架构） 
-    
+   •  Instruction Set Architectures
+   •  Embedded Systems（嵌入式系统）
+   •  Parallelism(并行化)
+   •  Hardware & Software
+   
+ 
 ## Reading List
 [Computer Organisation & Architecture sections 1.1, 1.2 and 1.3 up to Transistors](https://ebookcentral.proquest.com/lib/leeds/reader.action?c=UERG&docID=6824445&ppg=25)    
 
@@ -42,7 +46,7 @@
     • This gives code compatibility.
         backwards compatibility(代码向后兼容，即为老架构386写的代码，可以在新架构586上运行).
         Organisation differs between different versions.（不同版本架构不同）
-        
+
 我的理解   
 
     • Architecture定义了CPU的蓝图和规范，它定义CPU的指令和运行规范，是CPU的逻辑视图，这个级别对于程序员是可见的。  
@@ -50,6 +54,11 @@
     • Organisation是基于Architecture蓝图的具体实现，它实现CPU的物理细节，是CPU的物理视图，这个级别对于程序员是不可见的。  
 
     • Architecture就像房屋的设计图纸，而Organisation就像根据蓝图搭建的房屋。一份Architecture可以对应不同的Organisation实现。比如ARM CPU Architecture，就被数以百计的芯片公司（华为、中兴、Google)Organisation。
+举例
+
+    •  Arm64是Architecture，定义了Arm CPU的指令集和相关控制规范，但并未实现它，只是蓝图。
+
+    •  高通、苹果、华为公司遵照Arm64的架构规范，用不同的方法Organisation（实现了）各自的Arm CPU.  遵循 Arm Architecture规范的硬件产品可以无缝集成。    
       
 ###  1.5 扩展阅读
 [X86 CPU 架构发展历史](https://blog.csdn.net/Hide_in_Code/article/details/113799454)  
@@ -273,7 +282,7 @@ Structure分级视图|组成Structure的Component|Component Function|
 
 ### 3.3.3 Moore’s Law(摩尔定律)
     • 1965; Gordon Moore – co-founder(联合创始人) of Intel  
-    
+
     • Observed number of transistors that could be put on a single chip was doubling every year（单个芯片上的晶体管数量每年翻一番）
         ⬥ The pace slowed to a doubling every 18 months in the 1970’s but has sustained that rate ever since（20世纪70年代，这一速度放缓至每18个月翻一番，但此后一直保持这一速度）   
 
@@ -285,3 +294,39 @@ Structure分级视图|组成Structure的Component|Component Function|
         ⬥ Fewer inter-chip connections
 
 ![](images/w1s2_moor.jpg)
+
+### 3.3.3 集成电路计算机的发展史
+in 1950-1960  
+![](images/w1s2_mainframe.jpg)   
+in 1960-1970  
+![](images/w1s2_mini_computer.jpg)
+in 1970-
+![](images/w1s2_micro_computer.jpg)
+
+
+### 3.3.4 Build Block of Modern PC 
+![](images/w1s2_sysbus.jpg)
+![](images/w1s2_mem_bus.jpg)
+![](images/w1s2_micro_processor.jpg)
+
+## 4. Instruction Set Architectures(指令集ISA)
+### 4.1 ISA defines
+    • supported instructions
+    • data types
+    • Registers
+    • the hardware support for managing main memory
+    • the input/output model of implementations of the ISA
+
+### 4.2 classifications（类别)
+    CISC – Complex Instruction Set Computer (复杂指令集)
+    RISC – Reduced Instruction Set Computer (精简指令集)
+
+|ISA|||
+| --- | --- | --- |
+|CISC|x86||
+|CISC|x64||
+|RISC|RISC V||
+||ARM||
+||OpenRISC||
+    
+    
