@@ -231,5 +231,57 @@ Structure分级视图|组成Structure的Component|Component Function|
 
 
 ## 3.3 Transistor computer(电子管计算机：第二代计算机)
+### 3.3.1 Building Blocks(构建模块) of Computers
+![](images/w1s2_build_block.jpg)   
+|Build Block|Desc|
+| --- | --- |
+|Gate<br>(门)| • implements a simple Boolean or logical function<br>• Controls data flow<br>• 就是原来学过的与或非门 （And/Or/Not/Xor Gate)|
+|Memory Cell<br>(存储单元)| • store one bit of data<br> • can be in one of two stable states at any time(任何时候都处于两种稳定状态之一: 1 or 0)|  
+
+### 3.3.2 Building Blocks & Function
+
+    The basic elements of a digital computer,must perform data storage, movement, processing, and control functions. Only two fundamental types of components are required (Figure 1.8): gates and memory cells.
+
+|Function of computer|Build Block|
+| --- | --- |
+|Data storage| provided by memory cells|
+|Data processing | provided by gates(比如以前学过的，用AND、XOR、Not Gate实现半加器和 全加器)|  
+|Data movement |  • memory cell -> memory cell <br>  • memory cell -> gate -> memory cell|
+|Control|  • Gate has two data inputs plus a control signal input that activates the gate(一个激活门的控制信号)<br> •  When the control signal is ON, the gate performs its function on the data inputs and produces a data output. <br> • When the control signal is OFF, no output produced<br> • Memory cell stores the bit that is on input lead（存储单元存储输入引线上的位） when the WRITE control signal is ON<br> • Sends bit on output lead（输出引线） that is in the cell READ control signal is ON.|
+
+### 3.3.3 Transistors（晶体管)
+![](images/w1s2_trasistors.jpg)  
 
 ## 3.4 Integrated circuit computer(集成电路计算机：第三代计算机)
+### 3.3.1 Why?
+     • Transistors had to be soldered(焊接) to circuit board
+        ⬥ Expensive and cumbersome(繁琐) to manufacture  
+
+     • Created problem for computer industry.
+        ⬥ Early second-generation computers contained about 10,000 transistors.  
+
+        ⬥ This figure grew to the hundreds of thousands, making the manufacture of newer, more powerful machines increasingly difficult.   
+
+     • Integrated circuits developed to counter this(克服这个问题)
+        ⬥ Miniaturisation（小型化）
+        ⬥ Lots of transistors（晶体管） and connections between them on a tiny sliver of silicon（硅片)
+        ⬥ First IC produced in 1958 by Jack Kilby at Texas Instruments
+    
+### 3.3.2 relationship among Wafer,Chip,and Gate
+![](images/w1s2_wafer.jpg)  
+![](images/w1s2_chip_on_mb.jpg)  
+
+### 3.3.3 Moore’s Law(摩尔定律)
+    • 1965; Gordon Moore – co-founder(联合创始人) of Intel  
+    
+    • Observed number of transistors that could be put on a single chip was doubling every year（单个芯片上的晶体管数量每年翻一番）
+        ⬥ The pace slowed to a doubling every 18 months in the 1970’s but has sustained that rate ever since（20世纪70年代，这一速度放缓至每18个月翻一番，但此后一直保持这一速度）   
+
+    • Consequences（后果） of Moore’s law: 
+        ⬥ The cost of computer logic and memory circuitry has fallen at a dramatic rate（惊人速度）
+        ⬥ The electrical path length is shortened, increasing operating speed
+        ⬥ Computer becomes smaller, more convenient to use in a variety of environments（更方便应用于各种环境)
+        ⬥ Reduction in power and cooling requirements
+        ⬥ Fewer inter-chip connections
+
+![](images/w1s2_moor.jpg)
