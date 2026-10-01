@@ -1,6 +1,5 @@
-# Week1 Session2
-## 1. Python
-### 1.1 简介
+# 1. Python
+## 1.1 简介
     • A high-level programming language
        o  meaning more like natural (spoken) language than machine code  
 
@@ -13,7 +12,7 @@
         o natural language processing
         o AI
 
-### 1.2 History
+## 1.2 History
     • Over 30 years old    
 
     • Current version Python 3 about 15 years old    
@@ -23,7 +22,7 @@
 
     • Python 4 is not planned
 
-### 1.3  Run Python Program in  Codespaces 
+## 1.3  Run Python Program in  Codespaces 
     
 |步骤| 说明|
 | --- | --- |
@@ -47,16 +46,16 @@
             o Compiles it to machine-level instructions (byte-code)
             o Executes it  
 
-## 2. Python syntax(语法)
+# 2. Python syntax(语法)
      • Python recognises（识别） 2 forms of indentation（缩进）
         • <tab> space
         • 4 spaces
 
-### 2.1 Variables（变量)
+## 2.1 Variables（变量)
      • python变量不需要事先申明，可以直接使用
      • 在运行中，python变量可以改变数据类型，参见2.1.4
 
-#### 2.1.1 Variables Type
+### 2.1.1 Variables Type
 |简单数据类型| 说明|举例|
 | --- | --- | --- |
 |int |整数| v= 1|
@@ -73,19 +72,19 @@
 |Set |集合| v= {1, 2, 3, 4}  |
 |Dictionary|字典| v= {'Name': 'Runoob', 'Age': 7, 'Class': 'First'}|
 
-#### 2.1.2 Determine data type
+### 2.1.2 Determine data type
 ```python  
 >>> a = 111
 >>> isinstance(a, int)
 True
 ```
-#### 2.1.3 rules about variables name
+### 2.1.3 rules about variables name
     •  no spaces
     •  no symbols
     •  always start with a letter
     •  don’t use reserved words (for example ‘input’ or ‘print’)
 
-#### 2.1.4 dynamically typed(动态类型)
+### 2.1.4 dynamically typed(动态类型)
     •  The variable can change type through assignment
     •  The converse is called static typing  
 
@@ -105,7 +104,7 @@ True
 [Python3 基本数据类型](https://www.runoob.com/python3/python3-data-type.html)
     
 
-#### 2.1.6 Variables 类型转换
+### 2.1.6 Variables 类型转换
 ---
 ```python  
 y = int(2.8) # y 输出结果为 2
@@ -132,27 +131,27 @@ print(bool("hello"))    # 输出: True
 ```
 [Python3 基本数据类型转换](https://www.runoob.com/python3/python3-type-conversion.html)
 
-### 2.2 String类型
-#### 可以使用引号 ' 或 " 来创建字符串
+## 2.2 String类型
+### 2.2.1 可以使用引号 ' 或 " 来创建字符串
 ```python 
 var1 = 'Hello World!'
 var2 = "Runoob"
 ```
 
-#### 在需要在字符中使用特殊字符时，python 用反斜杠 \ 转义字符。
+### 2.2.2 在需要在字符中使用特殊字符时，python 用反斜杠 \ 转义字符。
 ```python 
 print("\\")    # 输出\
 print("\"")    # 输出"
 print("\n")    # 输出换行
 ```
 
-#### Python字符串更新（无法直接修改，必须用拼接的方式生成新的字符串)
+### 2.2.3 字符串修改（无法直接修改，必须用拼接的方式生成新的字符串)
 ```python 
 var1 = 'Hello World!'
 print ("已更新字符串 : ", var1[:6] + 'Runoob!')
 ```
 
-#### Python字符串运算符
+### 2.2.4 字符串运算符
 |操作符| 说明|举例|
 | ---- | --- | --- |
 |+ |字符串连接| a + b 输出结果： HelloPython |
@@ -162,24 +161,94 @@ print ("已更新字符串 : ", var1[:6] + 'Runoob!')
 |in	|成员运算符 - 如果字符串中包含给定的字符返回 True|	'H' in a 输出结果 True
 |not in|成员运算符 - 如果字符串中不包含给定的字符返回 True|	'M' not in a 输出结果 True|
   
-#### 内存布局  
+### 2.2.5 访问字符串中的值、截取字符串  
 ![](images/w1s2_python_str_format.jpg)
 
-#### f-string  
-
-    f-string 格式化字符串以 f 开头，后面跟着字符串，字符串中的表达式用大括号 {} 包起来，它会将变量或表达式计算后的值替换进去
+### 2.2.6 用f-string来格式化输出（非常重要，python3采用更方便的fstring来输出  ）
+####  1.  {变量}: 输出变量的值 
 ```python 
-name = 'Runoob'
-print(f'Hello {name}')  # 'Hello Runoob'
+one = 1
+two = 2
+print(f"{one}, {two}")   # 1 2
 
-x = 1
-print(f'{x+1}')   # '2'
+data = [4, 8, 15, 16, 23, 42]
+print(f"Best numbers: {data[4]} and {data[5]}") # Best numbers: 23 and 42
+``` 
 
-```   
+#### 2. {变量表达式}：输出变量表达式的结果
+```python 
+printf(f"{one} + {two} = {one+two}")   # 1 + 2 = 3  
+
+class Point:
+    x: int
+    y: int   
+pos = Point(23, 42)
+print(f"{pos.x}, {pos.y}") # 23, 42
+print(f"bigger value: {max(pos.x, pos.y)})" #bigger value: 42
+``` 
+#### 3. Padding/aligning strings
+
+右对齐： {变量:>字符数}
 ---
-[*** fstring教程(必看) ***](https://fstring.help/)  
+```python
+ val =  "test"
+ print(f"{val:>10}")  # '      test' 
+``` 
 
-#### function
+左对齐： {变量:<字符数}
+---
+```python
+ print(f"{val:<10}") # 'test      ' 
+``` 
+
+中对齐： {变量:^字符数}
+---
+```python
+ print(f"{val:^10}") # '   test  ' 
+``` 
+
+还可以设置填充字符:{变量:填充字符<字符数}
+---
+```python
+ print(f"{val:_<10}") # 'test______' 
+``` 
+
+默认对齐, strings是左对齐,但是numbers是右对齐
+---
+```python
+ print(f"{val:10}") # 'test      '
+
+ answer = 42
+ print(f"{answer:10}") # '        42'
+``` 
+
+Truncating long strings: {变量:.截取长度}
+---
+```python
+instrument = "xylophone"
+print(f"{instrument:.5}") #  'xylop'
+
+num = 1.23456
+print(f"{num:.4}") #  '1.235'    4位有效数字，不包括0，四舍五入
+``` 
+Combining truncating and padding：{变量:字符数.截取长度}
+---
+```python
+print(f"{instrument:10.5}"） # 'xylop     '  
+``` 
+#### 4. {变量=}：Debug变量
+```python 
+from datetime import date
+
+member_since = date(1975, 7, 31)
+delta = date(2022, 4, 11) - member_since
+print(f"{member_since=}")   # member_since=datetime.date(1975, 7, 31)
+``` 
+
+---
+#  [*** fstring教程(必看) ***](https://fstring.help/)  
+
+###  2.2.7 Function
 | 序号 | 方法 | 描述 |
 |---|---|---|
 | 1 | `count(str, beg=0, end=len(string))` | 返回 str 在 string 里面出现的次数，如果 beg 或者 end 指定则返回指定范围内 str 出现的次数 |
@@ -208,11 +277,11 @@ print(f'{x+1}')   # '2'
 | 24 | `zfill(width)` | 返回长度为 width 的字符串，原字符串右对齐，前面填充 0 |
 
 ---
-[Python3 字符串](https://www.runoob.com/python3/python3-string.html)
+# [Python3 字符串](https://www.runoob.com/python3/python3-string.html)
 
 
 
-### 2.3 input/output
+## 2.3 input/output
 ---
 ```python  
 >>> str = input("enter a number") # 输入类型是string
@@ -229,7 +298,7 @@ print(f'{x+1}')   # '2'
 ```
 [Python3 输入和输出](https://www.runoob.com/python3/python3-inputoutput.html)
 
-### 2.4 try...exception
+## 2.4 try...exception
 ---
 ```python 
 try:
@@ -258,7 +327,7 @@ except:
 
 [Python3 错误和异常](https://www.runoob.com/python3/python3-errors-execptions.html)
 
-### 2.5 Math
+## 2.5 Math
 |操作符| 说明|举例|
 | --- | --- | --- |
 |** |Power| 2**3 = 8 |

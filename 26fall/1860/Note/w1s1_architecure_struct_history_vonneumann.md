@@ -239,7 +239,7 @@ Structure分级视图|组成Structure的Component|Component Function|
 ![](images/w1s1_von_arch.jpg)
 
 
-## 3.3 Transistor computer(电子管计算机：第二代计算机)
+## 3.3 Transistor computer(晶体管计算机：第二代计算机)
 ### 3.3.1 Building Blocks(构建模块) of Computers
 ![](images/w1s2_build_block.jpg)   
 |Build Block|Desc|
