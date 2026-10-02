@@ -388,4 +388,81 @@ Generations of deployment culminating in the IoT(几代技术的发展最终形�
 | --- | --- |
 |![](images/w1s2_soc2.jpg)  ||
 |![](images/w1s2_fpga.jpg)  |![](images/w1s2_asic.jpg)  |
-![](images/w1s2_dsp2.jpg)  | |
+![](images/w1s2_dsp2.jpg)  | |  
+
+### 5.6 Arm Prcessors  
+|||
+| --- | --- |
+|Why？|Embedded systems need cheap, efficient processors|
+|Featrue(特性)|• High speed<br>• Low power<br>• Low heat generation|  
+|Architecture|Licenses design to manufacturers<br>(将设计授权给制造商,Arm只负责Architecture，芯片制造商负责Organisation)|  
+|Instruction Set Architectures(ISA)|RISC|   
+
+
+
+|Architecture Profiles(简介)|||
+| --- | --- | --- |
+|Cortex-A|用在智能设备：手机/平板|Intended for mobile devices: smartphones, tablets, etc|
+|Cortex-R|R:real-time<br>用在对时间要求非常高的实时性系统(自动驾驶)|• Intended for real-time applications<br>• Timing important<br>• Fast response to events|
+|Cortex-M|M:microcontrollers<br>用在嵌入式系统的微控制器|• Intended for microcontrollers|
+|总结|看后面的字母就知道芯片用途<br>• R: Real-time<br>• M: Microconroller<br>• A: smArt-device
+
+|Cortex-M architecture|||
+| --- | --- | --- |
+|Core and memory|• Cortex-M3  processor<br>• Static RAM (SRAM) data memory<br>• Flash memory for storing program instructions  and nonvarying application data.|
+|Energy management|Manages the various low-energy modes of operation|
+|Security|includes a hardware implementation of the Advanced Encryption Standard (AES).|
+|Bus|•32-bit bus : Connects all of the components on the chip|  
+|Peripheral bus(外围总线)|• Allows modules to communicate directly with each other without involving the processor<br>• Supports timing-critical operation and reduces software overhead.(支持时间关键型操作并减少软件开销)|  
+
+## 6. Parallelism(并行)
+### 6.1 Outline
+||||
+| --- | --- | --- |
+|Parallelism|Tasks can be split up(分割) into smaller tasks which can be assigned to（分配） processor|  
+|Pipeline（流水线)|• 装配线：每个工人完成整个任务的一个步骤，并将完成的项目传递给下一个工人，同时将下一个项目交给工人处理<br>• Pipeline is computing version of this (streaming)<br>|
+|SIMD|• same task to be repeated on lots of data: single instruction, multiple data (SIMD)<br>• Can divide data up(分割数据) and assign each batch(分配每个批次) to different processor<br>• GPU就是SIMD的一个例子：用一个线性变换指令同时作用多个顶点上，进行批量点的旋转、平移操作|
+|consequence|• Speeds up execution because tasks are running concurrently（并发） rather than consecutively（连续依次）<br>• Modern CPUs have multiple cores to try parallelism for speed up
+|
+
+### 6.2 Supercomputers(超算)
+![](images/w1s2_super_computer.jpg)  
+
+|||
+| --- | --- |
+|Feature(特性)|• Massively parallel computer(大规模并行计算机). Each processing unit works on small piece of overall task<br>• Contain thousands of processing units (compute nodes) <br>• Use custom networking（定制网络） to connect compute nodes<br>（因为计算机节点之间要通过网络相互通讯，普通网络通信时间相对于CPU而言太慢，所以要用延时很低的专用IB网络）|
+|Use（用途)|• computationally intensive tasks(计算敏感任务)<br>• Weather forecasting, Molecular modelling(分子建模), Big data analysis, etc.|
+|总结 | • Supercomputer将数万台computer用高速网络连接在一起，组成一个虚拟computer。每个Computer就是一个Node，就像multicore中的core。<br> • multicore的所有core封装在processor中，彼此通讯非常快；但Supercomputer的Node之间是用有线网络连接的，所以需要custom high speed networking |
+
+### 6.3 Computing Clusters(计算机集群)
+![](images/w1s2_cluster.webp)
+
+    Supercomputers(超算)的规模非常大，常常用于解超大规模方程组的科学实验和仿真，由国家主导开发。而 Computing Clusters(计算机集群)一般是中小型规模的计算，常用于企业、学校。你们学校的电脑就是Clusters  
+
+||Supercomputers|Computing Clusters|
+| --- | --- | --- |
+|Size|Massively parallel|Massively parallel|
+|Components|Custom|Off-the-shelf（现成组件）:   Servers , GPUs|
+|Networking|Custom|Standard|
+|Control and scheduling |Hardware and Software|Software|
+|Use| computationally intensive tasks(计算敏感任务)|Cloud computing(云计算)|
+
+### 6.4 Graphical Processing Units (GPUs)
+|||
+| --- | --- |
+|GPU|Provide efficient computation on arrays of data(数据阵列) using Single-Instruction Multiple Data (SIMD) techniques pioneered(开创) in supercomputers|
+|Use|• Rendering advanced graphics (高级图形渲染,即显卡)<br>• Physics simulations for games(游戏的物理仿真)<br>• Computations on large spreadsheets(电子表格)<br>• AI model training|
+|总结 | • GPUs早期只用在显卡上，用作图形渲染、CAD等方面，如英伟达RTX系列显卡.<br>• 随着Cloud computing和AI的发展，GPU还具有另外一个分支：通用数值计算，并行求解大规模方程组，主要用作AI和工业仿真，如英伟达H100。H100只有科学计算功能，没有图像渲染功能  |
+
+### 6.5 Amdahl’s Law
+|||
+| --- | --- |
+|![](images/s1w2_amdahl_law_2.jpg)  |![](images/s1w2_amdahl_law.jpg)  |
+
+    • Amdahl’s Law  
+        the overall performance improvement gained by optimizing a single part of a system is limited by the fraction of time that the improved part is actually used  (通过优化系统的单个部分获得的整体性能改进,受到改进部分实际使用时间的限制) 
+
+    • So, we do not get a speed up simply by adding more processors
+
+    • Depends on how the task can be parallelised(并行化)
+
