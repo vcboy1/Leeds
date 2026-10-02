@@ -1,12 +1,60 @@
 # Week1 Session1
 ## Overview
-   •  Architecture & Organisation(架构与组织)  
-   •  Computer Structure  
-   •  History of Computer Hardware  
-   •  Instruction Set Architectures
-   •  Embedded Systems（嵌入式系统）
-   •  Parallelism(并行化)
-   •  Hardware & Software
+###  Architecture & Organisation(架构与组织)  
+
+    Architecture: Logical design of the computer   
+    Organisation: Physical implementation of the architecture    
+
+###  Computer Structure  and Function  
+
+    Structure: This is the way in which components relate to each other.  
+    Function:  The operation of each individual component as part of the structure.
+  
+###  History of Computer Hardware  
+|代际|英文|中文|核心器件|代表|
+| --- | --- | --- | --- |--- |
+|第一代|	Electronic valves computer|	电子管计算机|electronic valves(电子管)|Von Neumann、Harvard|
+|第二代|	Transistor computer	|晶体管计算机|transistor（晶体管) |	Building Blocks：Gate、Memory Cell|
+|第三代|	Integrated circuit computer|	集成电路计算机	|刻在硅片上更小的transistor|MainFrame Computer、MiniComputer、MicroComputer|
+
+### Instruction Set Architectures
+|ISA|||
+| --- | --- | --- |
+|CISC|x86|• ISA called x86 after Intel 8086 processor (first in family)<br>• AMD processors compatible(兼容) with x86 instruction set<br>• Number of instructions increased as processors in family added more features<br>• Lots of instruction set extensions to handle special features（Virtualization、Cryptography, etc）.|
+||x64|x86的64位版本|
+|RISC|RISC V|Open standard|
+||ARM|Amber (ARM v2) is open source|
+||OpenRISC|Another open standard|
+
+### Embedded Systems（嵌入式系统）  
+|用途|缩写|解释|
+| --- | --- | --- |   
+|封装方式| Soc（片上系统）|一种集成思想：把 CPU、存储、外设甚至 GPU/DSP 都集成到一颗芯片|
+|芯片设计方式|ASIC（专用集成电路）|把设计"烧死"在硅片上,量产时单颗成本极低、性能功耗更好，适合量大，硬件固定不可改，不可编程|
+||FPGA（现场可编程门阵列）|出厂是空白逻辑，用户随时改设计 → 灵活，适合原型、小批量,可编程硬件：芯片里是大量逻辑单元，连线由你定义|
+|处理器用途|Microcontrollers（微控制器）|一颗芯片 = CPU + 存储 + 外设（定时器、GPIO、ADC…）|
+||DSP (数字信号处理器)|专为数字信号处理优化的处理器|
+
+    IoT:  IT, OT, Personal technology, Sensor/actuator technology  
+
+|Arm Architecture|||
+| --- | --- | --- |
+|Cortex-A|用在智能设备：手机/平板|Intended for mobile devices: smartphones, tablets, etc|
+|Cortex-R|R:real-time<br>用在对时间要求非常高的实时性系统(自动驾驶)|• Intended for real-time applications<br>• Timing important<br>• Fast response to events|
+|Cortex-M|M:microcontrollers<br>用在嵌入式系统的微控制器|• Intended for microcontrollers|
+|总结|看后面的字母就知道芯片用途<br>• R: Real-time<br>• M: Microconroller<br>• A: smArt-device
+
+### Parallelism(并行化)
+||Supercomputers|Computing Clusters|GPU|
+| --- | --- | --- | --- |
+|Size|Massively parallel|Massively parallel|Small scale parallel|
+|Components|Custom|Off-the-shelf（现成组件）:   Servers , GPUs|Off-the-shelf|
+|Networking|Custom Networking|Standard Networking|Bus|
+|Node(并行节点)|Computer|Computer|GPU core|
+|Control and scheduling |Hardware and Software|Software|Hardware|
+|Use| computationally intensive tasks(计算敏感任务)|Cloud computing(云计算)|Game/Video |
+
+### Hardware & Software
    
  
 ## Reading List
@@ -149,12 +197,11 @@ Structure分级视图|组成Structure的Component|Component Function|
 
 
 ## 3. History of Computer Hardware 
-|代际|英文|中文|时间|
-| --- | --- | --- | --- |
-|第一代|	Electronic valves computer|	电子管计算机|	1946–1958|
-|第二代|	Transistor computer	|晶体管计算机|	1958–1964|
-|第三代|	Integrated circuit computer|	集成电路计算机	|1964–1971|
-|第四代|	Microprocessor computer|	大规模/超大规模集成电路计算机	|1971 至今|   
+|代际|英文|中文|核心器件|代表|
+| --- | --- | --- | --- |--- |
+|第一代|	Electronic valves computer|	电子管计算机|electronic valves(电子管)|Von Neumann、Harvard|
+|第二代|	Transistor computer	|晶体管计算机|transistor（晶体管) |	Building Blocks：Gate、Memory Cell|
+|第三代|	Integrated circuit computer|	集成电路计算机	|刻在硅片上更小的transistor|MainFrame Computer、MiniComputer、MicroComputer|
 
 
 ### 3.1 Electronic valves computer(第一代：电子管计算机)
@@ -214,13 +261,14 @@ Structure分级视图|组成Structure的Component|Component Function|
 ### 3.2.5 Fetch-Decode-Execute Cycle
 ![](images/w1s1_von_fetch.jpg)  
 
-### 3.2.6 Bottleneck(架构瓶颈)   
+### 3.2.6 Von Neumann Bottleneck(架构瓶颈)   
 
     • Von Neumann architectures shares memory bus for data and program instructions
     • Single bus limits throughput (data transfer rate) between CPU and memory （单总线限制了CPU和内存之间的吞吐量）
     • CPU must wait for data to be moved to or from memory （CPU必须等待数据移入或移出内存）
 
-### 3.2.7 Bottleneck Mitigations(架构瓶颈缓解措施)
+### 3.2.7 Von Neumann Bottleneck Mitigations(架构瓶颈缓解措施)
+![](images/w1s1_von_harvard.jpg)    
 
     • Cache between the CPU and the main memory;
         Stores instructions and data for future operations  
