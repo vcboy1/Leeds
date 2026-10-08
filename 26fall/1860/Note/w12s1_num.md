@@ -237,8 +237,10 @@ Overflow rule:
 ##  5.4 Overflow and underflow(上溢和下溢)
 ![](images/w12_float_rep_float_underflow.jpg)
 
+##  5.4 十进制小数转换为32bits单精度float
+![](images/w12_float_rep_32_conv_from_10.jpg)
 
-# 6. 16-bit half-precision floating-Point Format（16位办精度浮点小数格式）
+# 6. 16-bit half-precision floating-Point Format（16位半精度浮点小数格式）
 ## 6.1 Format
 ![](images/w12_float_rep_float_16_format.jpg)
 
