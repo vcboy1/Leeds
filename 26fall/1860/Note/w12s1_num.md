@@ -147,6 +147,14 @@ Overflow rule:
 -----------
 
 # 4. Floating-Point Representations(浮点表示法)
+## Outline
+|Representations|desc|precision|Format|Bais(指数偏移)|
+|---|---|---|---|---|
+|Fixed Point|小数点位置固定| |符号+固定整数位+固定指数位： 1m.n|
+|Floating Point|小数点位置不固定 | 64 bits double precision| 符号+指数+位数： 1 + 11 + 52 |+1023|
+|| |32 bits single precision| 符号+指数+位数： 1 + 8 + 23 |+127|
+|| |16 bits half precision| 符号+指数+位数： 1 + 5 + 10 |+15|
+
 ## 4.1 Scientific Notation（科学计数法)
 ![](images/w12_float_rep_scientific_notation.jpg)
 
