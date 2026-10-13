@@ -1,1 +1,6 @@
 WorkSheet/
+video/
+~$*.docx
+~$*.pptx
+~$*.xlsx
+*.tmp

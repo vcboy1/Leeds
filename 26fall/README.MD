@@ -7,13 +7,13 @@ git stash pop
 
 ## 本地代码推送到github仓库
 ```
-git stash push
-git pull
-git stash pop
+git stash push              把本地修改保存到临时文件
+git pull                    本地同步github的最新版本，本地和github此时同步
+git stash pop               从临时文件中提取本地修改，施加在本地的最新版本上
 
-git add .
-git commit  -m ""
-git push
+git add .                   提交所有本地修改到暂存区
+git commit  -m ""           将暂存区的内容打包备注 
+git push                    将打包好的内容推到github上，本地和github此时同步
 ```
 ##  目录结构
     1850             课程代码  
