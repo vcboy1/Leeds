@@ -1,0 +1,41 @@
+CHIP Mux4way16 {
+    IN a[16], b[16],c[16],d[16],sel[2];
+    OUT out[16];
+
+
+    PARTS:
+
+ /*   
+算法思想：
+         sel[1]是高位，sel[0]是低位
+         a = 00  b = 01
+         c = 10  d = 11
+
+        sel[1]先在00,10中选出一个放到outx0
+        sel[1]再在10,11中选出一个放到out1x
+        sel[0]在outx0和out1x中选一个，为0:选outx0；否则out1x
+
+举例：
+ sel  = 10
+        sel[1] = 1, ac选出10,  bd选出11
+        sel[0] = 0, 10,11中选出10
+
+ sel  = 01
+        sel[1] = 0, ac选出00,  bd选出01
+        sel[0] = 1, 00,01中选出01
+
+*/
+        Mux16(a=a,b=c,sel=sel[1],out=outx0);
+        Mux16(a=b,b=d,sel=sel[1],out=out1x);
+        Mux16(a=outx0,b=out1x,sel=sel[0],out=out);
+
+/*
+
+        Not(in=sel[0], out = notSel0);        
+        Not(in=sel[1], out = notSel1) ;      
+        And(a=notSel1, b=notSel0, out= sign00 );
+        And(a=notSel1, b=sel[0],  out= sign01 );
+        And(a=sel[1],  b=notSel0, out= sign10 );
+        And(a=sel[1],  b=sel[0],  out= sign11 );
+*/        
+}

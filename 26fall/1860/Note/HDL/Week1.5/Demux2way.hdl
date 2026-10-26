@@ -1,0 +1,15 @@
+CHIP Demux2way {
+    IN in,sel;
+    OUT a,b;
+
+
+    PARTS:
+    /*
+        1. 先把控制信号Sel反一下，形成Sel/notSel两个控制信号
+        2. and (notSel信号, a )
+        3. and (sel信号, a )
+    */
+      Not(in= sel, out= notSel);
+      And(a=in , b= notSel, out= a);
+      And(a=in , b= sel, out= b);
+}

@@ -1,0 +1,8 @@
+CHIP test{
+    IN a[16],b[16],sel;
+    OUT c[16];
+
+    PARTS:
+     And16(a=a,out=out1,out[1] = lsb);
+     
+}

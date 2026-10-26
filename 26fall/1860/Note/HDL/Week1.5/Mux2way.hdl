@@ -1,0 +1,10 @@
+CHIP Mux2way {
+    IN a, b,sel;
+    OUT out;
+
+    PARTS:
+    Not(in=sel,out=notSel);
+    And (a=a, b=notSel, out=outa);
+    And (a=b, b=sel, out=outb);
+    Or  (a=outa, b=outb, out=out);
+}
