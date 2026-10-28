@@ -2,7 +2,6 @@ CHIP Mux4way16 {
     IN a[16], b[16],c[16],d[16],sel[2];
     OUT out[16];
 
-
     PARTS:
 
  /*   
@@ -11,9 +10,12 @@ CHIP Mux4way16 {
          a = 00  b = 01
          c = 10  d = 11
 
+        简单说： sel[1]=1,选出cd； sel[1]=0,选出ab； 然后再用selp[0]选
+
         sel[1]先在00,10中选出一个放到outx0
-        sel[1]再在10,11中选出一个放到out1x
+        sel[1]再在01,11中选出一个放到out1x
         sel[0]在outx0和out1x中选一个，为0:选outx0；否则out1x
+
 
 举例：
  sel  = 10

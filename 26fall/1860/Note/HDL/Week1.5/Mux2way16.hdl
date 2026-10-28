@@ -1,4 +1,4 @@
-CHIP Mux16bits2way {
+CHIP Mux2way16 {
     IN a[16], b[16],sel;
     OUT out[16];
 
