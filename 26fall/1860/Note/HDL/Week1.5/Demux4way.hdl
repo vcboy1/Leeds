@@ -2,7 +2,6 @@ CHIP Demux4way {
     IN in, sel[2];
     OUT a, b, c, d;
 
-
     PARTS:
     DMux(in=in , sel=sel[1] , a= out0x, b= out1x);
     DMux(in=in , sel=sel[0] , a= outx0, b= outx1 );
@@ -11,5 +10,4 @@ CHIP Demux4way {
     And(a= out0x, b= outx1, out=b );
     And(a= out1x, b= outx0, out=c );
     And(a= out1x, b= outx1, out=d );
-    
 }
