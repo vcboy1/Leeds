@@ -1,0 +1,13 @@
+// COMP1860 Activity Sheet 1.6, Question 3 - supplied chip.
+//
+// You do not need to understand or modify this file. For the multifunction
+// chip, all that matters is its interface: four inputs A, B, C, D and two
+// outputs X and Y. This one inverts two of its inputs and ignores the rest.
+CHIP chip4 {
+    IN A, B, C, D;
+    OUT X, Y;
+
+    PARTS:
+    Not(in=C, out=X);
+    Not(in=D, out=Y);
+}
