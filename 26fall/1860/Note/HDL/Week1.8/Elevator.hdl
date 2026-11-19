@@ -1,0 +1,10 @@
+CHIP Elevator {
+    IN RequestedFloor[16];
+    OUT RequestedFloorOut[16],CurrentFloorOut[16],DoorOpen;
+
+PARTS:
+
+    
+
+
+}

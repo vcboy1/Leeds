@@ -1,0 +1,8 @@
+CHIP TurnStyle {
+    IN Coin, Push;
+    OUT State;
+    PARTS:
+
+
+
+}
