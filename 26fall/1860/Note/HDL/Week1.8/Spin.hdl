@@ -1,0 +1,51 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/3/a/RAM64.hdl
+/**
+ * Memory of sixty four 16-bit registers.
+ * If load is asserted, the value of the register selected by
+ * address is set to in; Otherwise, the value does not change.
+ * The value of the selected register is emitted by out.
+ */
+CHIP Spin {
+    IN reset,dir;
+    OUT a,b,c,d,e,f;
+
+    PARTS:
+    
+    // dir = 0  ++in ;  dir =1 --in
+    Mux16(a[0]=true ,b[0..15]= true ,sel=dir , out= b16);
+    Add16(a[0]=nextState0,a[1]=nextState1,a[2]=nextState2,b= b16, 
+          out=addV,out[2]=v2,out[1]=v1,out[0]=v0);
+
+
+    // dir = 0时(+1)， 跳过110和111两个数
+    And(a= v2, b= v1, out= closewiseSkipFlag );
+    Mux16(a= addV, b= false, sel= closewiseSkipFlag, 
+        out= clockwiseSkipV);
+
+    // dir = 1时(-1)， 跳过110和111两个数
+    And(a= v2, b= v1, out= tmpFlag);
+    And(a= tmpFlag, b= v0, out= lessZeroFlag );
+    Mux16(a= addV, b[2]=true,b[1]=false,b[0]=true ,
+        sel= lessZeroFlag, out = aniClockwiseSkipV);
+
+    // 根据dir选出skipV
+    Mux16(a= clockwiseSkipV, b= aniClockwiseSkipV,sel=dir,out=skipV);
+
+    // 处理reset
+    Mux16(a= skipV, b= false, sel= reset, out=result,
+          out[0] = state0, out[1] = state1, out[2] = state2);  
+
+    DFF(in=state0 , out= nextState0);
+    DFF(in=state1 , out= nextState1);
+    DFF(in=state2 , out= nextState2);
+
+    // output       
+    DMux8Way(in= true,sel[0]=nextState0 ,
+             sel[1]=nextState1,sel[2]=nextState2, 
+             a= a, b= b, c=c , d= d, e= e, f= f);
+
+
+}
