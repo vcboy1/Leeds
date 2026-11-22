@@ -1,0 +1,50 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/3/a/RAM64.hdl
+/**
+ * Memory of sixty four 16-bit registers.
+ * If load is asserted, the value of the register selected by
+ * address is set to in; Otherwise, the value does not change.
+ * The value of the selected register is emitted by out.
+ */
+CHIP SpinDisplay {
+    IN reset,dir;
+    OUT a,b,c,d,e,f;
+
+    PARTS:
+    
+    // dir=0 (clockwise): si' = s(i-1); when dir=1: si' = s(i+1)
+    Mux(a=s5, b=s1, sel=dir, out=n0);
+    Mux(a=s0, b=s2, sel=dir, out=n1);
+    Mux(a=s1, b=s3, sel=dir, out=n2);
+    Mux(a=s2, b=s4, sel=dir, out=n3);
+    Mux(a=s3, b=s5, sel=dir, out=n4);
+    Mux(a=s4, b=s0, sel=dir, out=n5);
+
+    // reset
+    Mux(a=n0, b=true,  sel=reset, out=d0);
+    Mux(a=n1, b=false, sel=reset, out=d1);
+    Mux(a=n2, b=false, sel=reset, out=d2);
+    Mux(a=n3, b=false, sel=reset, out=d3);
+    Mux(a=n4, b=false, sel=reset, out=d4);
+    Mux(a=n5, b=false, sel=reset, out=d5);
+
+    // out(t) = in(t-1)
+    DFF(in=d0, out=s0);
+    DFF(in=d1, out=s1);
+    DFF(in=d2, out=s2);
+    DFF(in=d3, out=s3);
+    DFF(in=d4, out=s4);
+    DFF(in=d5, out=s5);
+
+    // output
+    Or(a=s0, b=s5, out=a);   // segment a
+    Or(a=s0, b=s1, out=b);   // segment b
+    Or(a=s1, b=s2, out=c);   // segment c
+    Or(a=s2, b=s3, out=d);   // segment d
+    Or(a=s3, b=s4, out=e);   // segment e
+    Or(a=s4, b=s5, out=f);   // segment f
+
+
+}
