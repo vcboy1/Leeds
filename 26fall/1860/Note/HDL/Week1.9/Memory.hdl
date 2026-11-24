@@ -21,22 +21,29 @@
  * and Keyboard chip specifications given in the lectures and the book.
  */
 CHIP Memory {
+
     IN in[16], load, address[15];
     OUT out[16];
 
     PARTS:
-	
+	//// Replace this comment with your code.
+    And16(a[0..14]= address, b[13..15]=true , out[0..12]= screen13,
+          out[0..13]= ram14, out[13] = addr13,out[14] = addr14);   
 
-    //if address < 168384 then load/read RAM16K
-   
-    //If address >= 16384  (100000000000000) and < 24576 (110000000000000) then use screen 
-    //address[14]== 1 and address[13]==0
-  
+    
+    Not(in= addr13, out = Addr13Not);
+    Not(in= addr14, out = ramAddrFlag);    // 0x xxxx
+    And(a=addr14,  b=Addr13Not,out=screenAddrFlag);// 10 xxxx
+    And(a=addr14,       b=addr13,   out=kbAddrFlag);    // 11 xxxx
 
-    //If address 24576 (110000000000000) then get value from the keyboard
-    //if address > 24576 the out 0
+    And(a = ramAddrFlag, b = load, out = ramLoad);
+    RAM16K(in=in , load= ramLoad, address= ram14, out= outRam);
 
-   
+    And(a = screenAddrFlag, b = load, out = screenLoad);
+    Screen(in=in , load= screenLoad, address=screen13 , out= outScreen);
+    
+    Keyboard(out=outKb);
 
-
+    Mux16(a= outScreen, b=outRam , sel=ramAddrFlag , out= out1);
+    Mux16(a= out1,      b=outKb  , sel=kbAddrFlag  , out= out);
 }
