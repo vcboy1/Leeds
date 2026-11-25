@@ -25,23 +25,29 @@ CHIP Memory {
     OUT out[16];
 
     PARTS:
-	//// Replace this comment with your code.
-    And16(a[0..14]= address, b[13..15]=true , 
-           out[13] = addr13,out[14] = addr14);   
+    //根据address第13,14位,判断是ram，screen还是kb
+ /*   
+    Not(in= address[13], out = Addr13Not);
+    Not(in= address[14], out = ram);    // 0x xxxx
+    And(a=address[14],  b=Addr13Not,   out=screen);// 10 xxxx
+    And(a=address[14],  b=address[13], out=kb);    // 11 xxxx
+*/    
+    DMux4Way(in=true , sel=address[13..14] , 
+             a=ram1 , b= ram2, c=screen, d=kb );
+    Or(a= ram1, b= ram2 , out= ram );
 
-    Not(in= addr13, out = Addr13Not);
-    Not(in= addr14, out = Addr14Not);    // 0x xxxx
-    And(a=addr14,  b=Addr13Not,out=screenAddrFlag);// 10 xxxx
-    And(a=addr14,  b=addr13,   out=kbAddrFlag);    // 11 xxxx
-
-    And(a = Addr14Not, b = load, out = ramLoad);
+    // 当ram = 1, load = 1时, 生成真正的ramLoad信号
+    And(a = ram, b = load, out = ramLoad);
     RAM16K(in=in , load= ramLoad, address= address[0..13], out= outRam);
 
-    And(a = screenAddrFlag, b = load, out = screenLoad);
+    // 当screen = 1, load = 1时, 生成真正的screenLoad信号
+    And(a = screen, b = load, out = screenLoad);
     Screen(in=in , load= screenLoad, address=address[0..12] , out= outScreen);
     
+    // 键盘区不能写，只能读
     Keyboard(out=outKb);
 
-    Mux16(a= outScreen, b=outRam , sel=Addr14Not , out= out1);
-    Mux16(a= out1,      b=outKb  , sel=kbAddrFlag, out= out);
+    // outRam,outScreen根据ram二选一，其结果和outKb根据kb二选一
+    Mux16(a= outScreen, b=outRam , sel=ram , out= out1);
+    Mux16(a= out1,      b=outKb  , sel=kb, out= out);
 }
